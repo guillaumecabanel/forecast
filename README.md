@@ -2,6 +2,8 @@
 
 Cool forecast in terminal 🤓
 
+Use undocumented api from http://data.meteo-villes.com
+
 ## Setup
 
 Use an alias:
