@@ -2,13 +2,18 @@ require_relative 'forecast_cli'
 
 def display_forecast
   if Forecast::CITIES.map(&:downcase).include? ARGV[0].downcase
-    puts ""
-    puts ForecastCLI.now(ARGV[0])
-    puts ""
-    puts ForecastCLI.today(ARGV[0])
-    puts "------------------------------------------"
-    puts ""
-    puts ForecastCLI.tomorrow(ARGV[0])
+    begin
+      puts ""
+      puts ForecastCLI.now(ARGV[0])
+      puts ""
+      puts ForecastCLI.today(ARGV[0])
+      puts "------------------------------------------"
+      puts ""
+      puts ForecastCLI.tomorrow(ARGV[0])
+    rescue SocketError => e
+      puts "Error: "
+      puts e
+    end
   else
     puts "Unavailable city, type `forecast cities` to get the available cities"
   end

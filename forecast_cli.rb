@@ -4,7 +4,7 @@ require_relative 'forecast'
 class ForecastCLI < Forecast
   class << self
     def now(city)
-      "Actuellement à #{city.capitalize}           🌡 #{ForecastCLI.colorised_temperature forecasts_data(city)['TempInst'].to_i}°C"
+      "Actuellement à #{city.capitalize}           #{ForecastCLI.colorised_temperature forecasts_data(city)['TempInst'].to_i}°C"
     end
 
     def colorised_temperature(temperature)
@@ -24,7 +24,7 @@ class ForecastCLI < Forecast
         color = "#d35400"
       end
 
-      Paint[temperature, color]
+      Paint["🌡 #{temperature}", color]
     end
   end
 
@@ -34,7 +34,7 @@ class ForecastCLI < Forecast
 
     Matin    | Après-midi |     Soir
              |            |
-  #{PICTOS[morning_pic]}  🌡 #{ForecastCLI.colorised_temperature morning_min_temp}°C |  #{PICTOS[afternoon_pic]}  🌡 #{ForecastCLI.colorised_temperature afternoon_max_temp}°C |  #{PICTOS[evening_pic]}  🌡 #{ForecastCLI.colorised_temperature evening_min_temp}°C
+  #{PICTOS[morning_pic]}  #{ForecastCLI.colorised_temperature morning_min_temp}°C |  #{PICTOS[afternoon_pic]}  #{ForecastCLI.colorised_temperature afternoon_max_temp}°C |  #{PICTOS[evening_pic]}  #{ForecastCLI.colorised_temperature evening_min_temp}°C
 
  #{description}
     TXT
